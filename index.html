@@ -17,6 +17,12 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-x: hidden;
+      max-width: 100%;
+      overscroll-behavior-x: none;
+    }
+
     html,
     body {
       margin: 0;
@@ -25,21 +31,26 @@
       min-height: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
       color: var(--text-main);
-      overflow-x: hidden;
     }
 
     body {
+      overflow-x: hidden;
+      max-width: 100%;
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
       background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
     }
 
     .page {
       position: relative;
       width: 100%;
+      max-width: 100%;
       min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      overflow-x: hidden;
     }
 
     .intro {
@@ -78,18 +89,27 @@
     .celebration {
       position: relative;
       width: 100%;
+      max-width: 100%;
       min-height: 100svh;
       display: none;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 3.5rem 1rem 2rem;
+      overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior-x: none;
+      touch-action: pan-y;
       -webkit-overflow-scrolling: touch;
     }
 
     .celebration.show {
       display: flex;
+    }
+
+    .celebration > div {
+      max-width: 100%;
+      min-width: 0;
     }
 
     .party-emoji {
@@ -126,13 +146,16 @@
     }
 
     .letter {
-      max-width: 820px;
+      max-width: min(820px, 100%);
+      width: 100%;
       padding: 1.5rem;
       border-radius: 1rem;
       background: var(--card-bg);
       backdrop-filter: blur(8px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       animation: fadeInUp 700ms 350ms ease both;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .photo-wrap {
@@ -158,6 +181,7 @@
     .photo {
       display: block;
       width: 100%;
+      max-width: 100%;
       height: auto;
       object-fit: cover;
       transform: scale(1.01);
@@ -171,7 +195,7 @@
     }
 
     .letter p {
-      margin: 0;
+      margin: 0 0 1rem;
       line-height: 1.7;
       font-size: 1.075rem;
       color: #374151;
@@ -179,6 +203,7 @@
 
     .letter .sign {
       margin-top: 1rem;
+      margin-bottom: 0;
       color: #6b7280;
       font-size: 0.98rem;
     }
@@ -348,18 +373,26 @@
       <div>
         <div class="big-gift">🎁</div>
         <article class="letter">
-          <h1>З Днем Народження, Наталю! 🌸</h1>
+          <h1>Вітаємо тебе з Днем народження! 🎉</h1>
           <p>
-            Наталю, щиро вітаю тебе з Днем народження! 🌷<br /><br />
-            Нехай кожен твій день буде наповнений теплом, спокоєм і маленькими моментами радості, які роблять життя особливим.<br /><br />
-            Бажаю тобі міцного здоров'я, внутрішньої гармонії та легкості в усьому, за що берешся.<br />
-            Нехай поруч будуть щирі люди, які підтримують і надихають, а в серці завжди буде світло і затишно.<br /><br />
-            Нехай твої мрії здійснюються м'яко й природно, приносячи тобі задоволення та усмішку. ✨
+            Нехай цей рік принесе тобі багато тепла, радості й приємних моментів, які хочеться згадувати з усмішкою.
+          </p>
+          <p>
+            Нехай все складалося легко, а робота приносить не лише результат, а й задоволення 💛
+          </p>
+          <p>
+            Бажаємо гармонії в душі, натхнення в кожному дні та сил для здійснення всього задуманого. Нехай у твоїй родині завжди панують тепло, підтримка, мир і злагода.
+          </p>
+          <p>
+            Окремо бажаємо безпеки та спокою для твого чоловіка — нехай усе з ним буде добре, а ти завжди відчувала впевненість і внутрішній спокій 🙏
+          </p>
+          <p>
+            Нехай поруч будуть щирі люди, а життя дарує багато світлих і добрих моментів ✨
           </p>
           <div class="photo-wrap">
             <img class="photo" src="./img.jpg" alt="Святкове фото" loading="lazy" decoding="async" />
           </div>
-          <p class="sign">З найтеплішими побажаннями 💌</p>
+          <p class="sign">З найкращими побажаннями!</p>
         </article>
       </div>
     </section>
