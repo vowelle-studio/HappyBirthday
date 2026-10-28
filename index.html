@@ -21,12 +21,12 @@
   <meta name="twitter:image" content="https://vowelle-studio.github.io/HappyBirthday/assets/katzenparty-preview.png">
   <title>Eine miau-gische Geburtstagsüberraschung ✨</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./style.css">
-  <link rel="stylesheet" href="./motion.css">
-  <link rel="stylesheet" href="./responsive.css">
-  <script src="./music.js" defer></script>
-  <script src="./motion.js" defer></script>
-  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=20261028-9">
+  <link rel="stylesheet" href="./motion.css?v=20261028-9">
+  <link rel="stylesheet" href="./responsive.css?v=20261028-9">
+  <script src="./music.js?v=20261028-9" defer></script>
+  <script src="./motion.js?v=20261028-9" defer></script>
+  <script src="./script.js?v=20261028-9" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -41,18 +41,18 @@
       <div class="envelope-scene">
         <span class="doodle sparkle sparkle-one" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m16 2 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z"/></svg></span>
         <span class="doodle sparkle sparkle-two" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" data-flower="true" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 3v26M3 16h26M7 7l18 18M7 25 25 7"/></svg></span>
-        <span class="little-heart" aria-hidden="true">♡</span>
+        <span class="little-heart" aria-hidden="true"><span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span></span>
         <span class="handnote cover-note">Psst … da ist<br>eine Party drin!<svg viewBox="0 0 85 65" aria-hidden="true"><path d="M5 5Q80 0 65 54m-15-9 15 12 12-15"/></svg></span>
         <button id="open-card" class="envelope" aria-label="Geburtstagskarte öffnen">
           <span class="envelope-shell">
           <span class="envelope-back"></span>
           <span class="peeking-cat" data-cat="orange" aria-hidden="true"></span>
-          <span class="letter"><span>Für dich. ♡<small>Ein bisschen Glück.<br>Ganz viel Miau.</small></span></span>
+          <span class="letter"><span>Für dich. <span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span><small>Ein bisschen Glück.<br>Ganz viel Miau.</small></span></span>
           <span class="envelope-front"></span>
           <span class="envelope-stamp" aria-hidden="true"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="26" rx="9" ry="7"/><ellipse cx="9" cy="17" rx="3.5" ry="5" transform="rotate(-25 9 17)"/><ellipse cx="17" cy="11" rx="3.5" ry="5"/><ellipse cx="26" cy="12" rx="3.5" ry="5" transform="rotate(15 26 12)"/><ellipse cx="33" cy="19" rx="3.5" ry="5" transform="rotate(30 33 19)"/></svg><small>MIAU POST</small></span>
-          <span class="envelope-address" aria-hidden="true">Für dich ♡</span>
+          <span class="envelope-address" aria-hidden="true">Für dich <span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span></span>
           <span class="envelope-flap"></span>
-          <span class="seal" aria-hidden="true">♡</span>
+          <span class="seal" aria-hidden="true"><span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span></span>
           <span class="envelope-label">MIT EINER EXTRAPORTION KATZEN</span>
           </span>
         </button>
@@ -77,7 +77,7 @@
         <div class="party-cat cat-five" data-kind="pink" data-name="Frau Flausch"></div>
         <div class="party-cat cat-six" data-kind="white" data-name="Sir Miau"></div>
         <div class="cake-area">
-          <span class="handnote cake-note" id="cake-hint" lang="de">Wünsch dir was.<br>Dann puste! <span aria-hidden="true">↙</span></span>
+          <span class="handnote cake-note" id="cake-hint" lang="de">Wünsch dir was.<br>Dann puste! <span class="cake-arrow" aria-hidden="true"><svg viewBox="0 0 85 65" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M72 5Q8 8 21 53m-10-11 11 13 12-14"/></svg></span></span>
           <button id="cake" class="cake" aria-label="Geburtstagskerzen auspusten">
             <svg viewBox="0 0 350 310" role="img" aria-label="Eine Geburtstagstorte mit fünf brennenden Kerzen">
               <defs>
@@ -124,14 +124,15 @@
       <p id="wish-message" class="wish-message">Нехай цей день тішить тебе, як нова коробка — кота.</p>
       <div class="party-actions"><button id="more-cats" class="button primary">Ще котиків! <span aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" data-flower="true" viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 3v26M3 16h26M7 7l18 18M7 25 25 7"/></svg></span></button><button id="reset-card" class="button secondary">Відкрити ще раз <span aria-hidden="true">↺</span></button></div>
       <p class="microcopy cat-instructions"><span class="desktop-instruction">Натисни на котиків</span><span class="touch-instruction">Торкнися котиків</span> — кожен має що сказати.</p>
-      <div class="personal-note"><span aria-hidden="true">♡</span><p>Бажаємо щастя, тепла й гарного настрою.<br>І завжди знаходити привід муркотіти від радості!</p><span class="sign-off" id="sender">З любов’ю, твоя команда</span></div>
+      <div class="personal-note"><span aria-hidden="true"><span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span></span><p>Бажаємо щастя, тепла й гарного настрою.<br>І завжди знаходити привід муркотіти від радості!</p><span class="sign-off" id="sender">З любов’ю, твоя команда</span></div>
     </section>
   </main>
 
-  <footer><span>MIT LIEBE, VIEL FELL & EIN BISSCHEN CHAOS.</span><span>Handverlesen. Pfotengeprüft. <span aria-hidden="true">♡</span></span></footer>
+  <footer><span>MIT LIEBE, VIEL FELL & EIN BISSCHEN CHAOS.</span><span>Handverlesen. Pfotengeprüft. <span aria-hidden="true"><span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span></span></span></footer>
   <div id="effects" aria-hidden="true"></div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Alles Gute zum Geburtstag! 🎂 Diese Katzenparty braucht JavaScript. Bitte aktiviere es, um die Karte zu öffnen.</div></noscript>
 </body>
 </html>
+
 

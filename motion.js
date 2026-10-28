@@ -123,7 +123,7 @@ window.KatzenMotion = (() => {
     for (let i = 0; i < count; i++) {
       const element = document.createElement('span');
       element.className = `effect-glint${hearts ? ' heart-reaction' : ''}`;
-      if (hearts) element.textContent = i % 3 ? '♡' : '♥';
+      if (hearts) element.innerHTML = `<svg viewBox="0 0 32 32" fill="${i % 3 ? 'none' : 'currentColor'}" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg>`;
       else element.innerHTML = sparkleSvg(i % 3 === 0);
       element.style.color = colors[i % colors.length];
       const angle = (i / count) * Math.PI * 2;

@@ -50,6 +50,11 @@ ellipse.music-note { fill: currentColor; stroke: none; }
 .sparkle svg, .stage-sparkle svg, .mini-flower svg, #more-cats > span svg, .effect-glint svg { width: 1em; height: 1em; display: block; }
 .mini-flower, #more-cats > span { display: inline-block; }
 .cake-caption { position: absolute; bottom: 0; left: 0; right: 0; margin: 0; font-size: 8px; line-height: 1.3; color: #8b7c74; pointer-events: none; }
+.heart-icon { display: inline-flex; width: .9em; height: .9em; vertical-align: -.08em; color: inherit; }
+.heart-icon svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.cake-note .heart-icon { display: inline-flex; width: .9em; height: .9em; margin: 0; font-size: 1em; }
+.cake-arrow { display: block; width: 38px; height: 38px; margin: 4px 0 0 -8px; }
+.cake-arrow svg { display: block; width: 100%; height: 100%; }
 
 @media (max-width: 700px) {
   .site-header { height: 0; padding: 0; }
@@ -82,17 +87,17 @@ ellipse.music-note { fill: currentColor; stroke: none; }
   .cover .cover-bottom { margin: 20px auto 4px; }
   .cover .cover-note { font-size: 15px; top: 0; right: 0; }
   .cover .microcopy { margin-top: 13px; }
-  .party { padding-top: 39px; }
+  .party { padding-top: 14px; }
   .party > .eyebrow { max-width: 88%; margin: auto; font-size: 7px; line-height: 1.6; }
-  .party h1 { font-size: clamp(42px, 13vw, 72px); margin: 22px 0 18px; }
+  .party h1 { font-size: clamp(42px, 13vw, 72px); margin: 12px 0 12px; }
   .party-intro { font-size: 12px; max-width: 85%; }
   .mobile-break { display: block; }
   .party-stage {
     --phone-cake-width: min(58vw, 205px);
     display: block;
     width: min(100%, 450px);
-    height: 466px;
-    margin: 16px auto 16px;
+    height: 423px;
+    margin: 8px auto 12px;
     padding: 0;
     isolation: isolate;
   }
@@ -107,12 +112,12 @@ ellipse.music-note { fill: currentColor; stroke: none; }
     aspect-ratio: 5 / 6;
     --tilt: 0deg;
   }
-  .cat-three { top: 28px; left: 11%; width: 70px; --tilt: -9deg; }
+  .cat-three { top: 18px; left: 13%; width: 66px; --tilt: -9deg; }
   .cat-two { top: 0; left: 43%; width: 60px; --tilt: 6deg; }
-  .cat-six { top: 42px; right: 9%; width: 66px; --tilt: 9deg; }
-  .cat-one { top: 326px; left: 9%; width: 74px; --tilt: -7deg; }
-  .cat-four { top: 376px; left: 42%; width: 60px; --tilt: -6deg; }
-  .cat-five { top: 346px; right: 9%; width: 68px; --tilt: 10deg; }
+  .cat-six { top: 26px; right: 11%; width: 62px; --tilt: 9deg; }
+  .cat-one { top: 302px; left: 11%; width: 70px; --tilt: -7deg; }
+  .cat-four { top: 341px; left: 42%; width: 58px; --tilt: -6deg; }
+  .cat-five { top: 320px; right: 11%; width: 66px; --tilt: 10deg; }
   .party-cat button { min-width: 44px; min-height: 44px; }
   .party-cat button:hover { transform: none; }
   .cat-click-label { display: none; }
@@ -125,23 +130,24 @@ ellipse.music-note { fill: currentColor; stroke: none; }
     aspect-ratio: 350 / 310;
     left: calc((100% - var(--phone-cake-width)) / 2);
     right: auto;
-    top: 133px;
+    top: 112px;
     bottom: auto;
     z-index: 1;
   }
   .cake { display: block; }
-  .cake-note { top: -6px; left: 0; right: 0; width: 100%; font-size: 12px; line-height: 1.2; text-align: center; transform: rotate(-3deg); }
-  .cake-note span { display: none; }
+  .cake-note { top: -10px; left: calc(100% - 34px); right: auto; width: 90px; font-size: 11px; line-height: 1.25; text-align: left; transform: rotate(6deg); }
+  .cake-note .cake-arrow { display: block; width: 34px; height: 34px; margin: 2px 0 0 -9px; }
+  .cake-arrow svg { display: block; width: 100%; height: 100%; }
   .speech-note, .stage-ground { display: none; }
-  .birthday-sticker { display: flex; width: 74px; height: 74px; top: 201px; left: 8px; right: auto; outline-width: 3px; transform: rotate(-10deg); pointer-events: none; }
+  .birthday-sticker { display: flex; visibility: visible; width: 74px; height: 74px; top: 174px; left: 8px; right: auto; outline-width: 3px; transform: rotate(-10deg); pointer-events: none; }
   .birthday-sticker strong { font-size: 13px; line-height: 1.05; margin: 7px 0; }
   .birthday-sticker span { font-size: 4px; letter-spacing: .6px; }
   .birthday-sticker span:last-child { font-size: 3.4px; letter-spacing: .1px; }
   .cake-caption { left: -25px; right: -25px; font-size: 8px; }
   .s1 { display: none; }
   .s1 { top: 170px; left: 8%; font-size: 20px; }
-  .s2 { top: 210px; right: 7%; font-size: 22px; }
-  .s3 { top: 320px; bottom: auto; left: 39%; font-size: 16px; }
+  .s2 { top: 190px; right: 7%; font-size: 22px; }
+  .s3 { top: 298px; bottom: auto; left: 39%; font-size: 16px; }
   .wish-message { max-width: 420px; font-size: 20px; padding: 0 22px; }
   .party-actions { padding: 0 18px; gap: 10px; }
   .party-actions .button { min-height: 50px; padding: 12px 16px; gap: 15px; }

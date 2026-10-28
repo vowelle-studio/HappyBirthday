@@ -3,6 +3,8 @@
   const $ = (selector) => document.querySelector(selector);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const motion = window.KatzenMotion;
+  const heartMarkup = '<span class="heart-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28S3 20 3 11a7 7 0 0 1 13-4 7 7 0 0 1 13 4c0 9-13 17-13 17Z"/></svg></span>';
+  const cakeArrowMarkup = '<span class="cake-arrow" aria-hidden="true"><svg viewBox="0 0 85 65" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M72 5Q8 8 21 53m-10-11 11 13 12-14"/></svg></span>';
   const palettes = {
     orange: ['#e8a36b', '#f8d7ac', '#c6b6e0', '#d7a4a0'],
     gray: ['#a9aeba', '#e2e0dc', '#e7a064', '#d7a4a0'],
@@ -195,6 +197,8 @@
   document.addEventListener('pointerdown', unlockMusic, { capture: true, passive: true });
   document.addEventListener('touchend', unlockMusic, { capture: true, passive: true });
   document.addEventListener('keydown', unlockMusic, { capture: true });
+  document.addEventListener('click', unlockMusic, { capture: true });
+  document.addEventListener('katzenmusicchange', () => showMusicState(window.KatzenMusic.isPlaying));
 
   $('#sound-toggle').addEventListener('click', async () => {
     if (soundBusy) return;
@@ -229,7 +233,7 @@
     $('#party').hidden = false;
     showMusicState(window.KatzenMusic.isPlaying);
     document.querySelector('footer > span:first-child').textContent = 'З ЛЮБОВ’Ю, ПУХНАСТИМИ ЛАПКАМИ Й ТРОХИ ХАОСОМ.';
-    document.querySelector('footer > span:last-child').textContent = 'Перевірено котиками. ♡';
+    document.querySelector('footer > span:last-child').innerHTML = 'Перевірено котиками. ' + heartMarkup;
     window.scrollTo({ top: 0, behavior: 'instant' });
     $('#party-title').focus({ preventScroll: true });
     motion.revealParty();
@@ -273,7 +277,7 @@
     extinguishTimer = setTimeout(() => $('#cake').classList.add('extinguished'), reducedMotion.matches ? 0 : 1000);
     $('#cake').setAttribute('aria-label', 'Die Geburtstagskerzen sind ausgepustet');
     $('#cake svg').setAttribute('aria-label', 'Eine Geburtstagstorte mit fünf ausgepusteten Kerzen');
-    $('#cake-hint').innerHTML = 'Pffff … geschafft!<br>Dein Wunsch ist unterwegs. ♡';
+    $('#cake-hint').innerHTML = 'Geschafft!<br>Wunsch unterwegs. ' + heartMarkup;
     $('#cake-caption').textContent = 'Eine Geburtstagstorte mit fünf ausgepusteten Kerzen';
     $('#wish-message').textContent = 'Бажання відправлено. Всесвіт уже набирає відповідь…';
     toast('Усі свічки погасли! Твоє бажання — наш маленький секрет.');
@@ -312,7 +316,7 @@
     $('#cover').hidden = false;
     showMusicState(window.KatzenMusic.isPlaying);
     document.querySelector('footer > span:first-child').textContent = 'MIT LIEBE, VIEL FELL & EIN BISSCHEN CHAOS.';
-    document.querySelector('footer > span:last-child').textContent = 'Handverlesen. Pfotengeprüft. ♡';
+    document.querySelector('footer > span:last-child').innerHTML = 'Handverlesen. Pfotengeprüft. ' + heartMarkup;
     $('#cover').classList.remove('opening');
     $('#reset-card').disabled = false;
     $('#open-button').disabled = false;
@@ -322,7 +326,7 @@
     $('#cake').disabled = false;
     $('#cake').setAttribute('aria-label', 'Geburtstagskerzen auspusten');
     $('#cake svg').setAttribute('aria-label', 'Eine Geburtstagstorte mit fünf brennenden Kerzen');
-    $('#cake-hint').innerHTML = 'Wünsch dir was.<br>Dann puste! <span aria-hidden="true">↙</span>';
+    $('#cake-hint').innerHTML = 'Wünsch dir was.<br>Dann puste! ' + cakeArrowMarkup;
     $('#wish-message').textContent = 'Нехай цей день тішить тебе, як нова коробка — кота.';
     $('#cake-caption').textContent = 'Eine Geburtstagstorte mit fünf brennenden Kerzen';
     wished = false;
