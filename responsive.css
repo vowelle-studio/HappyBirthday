@@ -1,0 +1,153 @@
+/* Sage stationery and a scattered phone composition with room for every cat. */
+.envelope-back {
+  background: linear-gradient(160deg, #91a97c, #748f62);
+  border-color: #5f7452;
+  box-shadow: 0 16px 22px -15px #536a493d;
+}
+.envelope-front {
+  background: linear-gradient(140deg, #bfd1ad, #a5bd91);
+  border-color: #627854;
+}
+.envelope-front::after {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  transform: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 340 222' preserveAspectRatio='none'%3E%3Cpath d='M0 222 170 111 340 222' fill='none' stroke='%23677f56' stroke-opacity='.45' stroke-width='1.2'/%3E%3Cpath d='M2 220 170 114 338 220' fill='none' stroke='%23edf3e5' stroke-opacity='.4' stroke-width='1'/%3E%3C/svg%3E") center / 100% 100%;
+}
+.envelope-flap { background: linear-gradient(165deg, #d9e5cd, #b6cca1); }
+.envelope-label { bottom: 17px; color: #42563b; font-size: 7px; letter-spacing: 1.6px; }
+.envelope-stamp {
+  position: absolute;
+  left: 24px;
+  bottom: 40px;
+  width: 40px;
+  height: 46px;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f3f0dca6;
+  border: 1px dashed #6f845b;
+  outline: 3px solid #e9eddaa6;
+  border-radius: 2px;
+  transform: rotate(-7deg);
+  pointer-events: none;
+}
+.envelope-stamp svg { width: 27px; height: 27px; fill: #789164; }
+.envelope-stamp small { font: 5px var(--sans); letter-spacing: .8px; color: #5b704c; }
+.envelope-address { position: absolute; right: 29px; bottom: 46px; z-index: 6; font: italic 21px var(--serif); transform: rotate(-5deg); color: #4f6742; pointer-events: none; }
+.seal { background: linear-gradient(145deg, #e2a17d, #cb7750); border-color: #a46647; border-radius: 47% 52% 48% 50%; box-shadow: 1px 4px 5px #4f67422e, inset 0 0 0 4px #f7c29d50; }
+.seal::after { content: ''; position: absolute; inset: 6px; border: 1px solid #ffe5c55c; border-radius: 50%; }
+.sound-icon svg { width: 22px; height: 22px; display: block; overflow: visible; }
+.music-note { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+ellipse.music-note { fill: currentColor; stroke: none; }
+.music-slash-back { stroke: var(--paper); stroke-width: 5; }
+.music-slash { stroke: #cd5b58; stroke-width: 2.2; stroke-linecap: round; }
+.sound-toggle[aria-pressed=true] .music-slash, .sound-toggle[aria-pressed=true] .music-slash-back { display: none; }
+
+@media (max-width: 700px) {
+  .site-header { height: 0; padding: 0; }
+  .sound-toggle {
+    position: fixed;
+    right: 8px;
+    top: calc(50svh - 23px);
+    bottom: auto;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    background: #fbf8efed;
+    border-color: #bfceb2;
+    color: #506743;
+    box-shadow: 0 4px 18px #43344714, inset 0 0 0 3px #fff8;
+    z-index: 40;
+  }
+  .sound-toggle[aria-pressed=true] { background: #e4edd9f5; }
+  .sound-toggle #sound-label, .sound-toggle .toggle-light { display: none; }
+  .sound-icon svg { width: 24px; height: 24px; }
+  .sound-toggle:focus-visible { outline-offset: 4px; }
+  .toast { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
+  .cover { padding-top: 46px; min-height: calc(100svh - 90px); }
+  .cover h1 { font-size: clamp(40px, 12.5vw, 66px); }
+  .party { padding-top: 39px; }
+  .party > .eyebrow { max-width: 88%; margin: auto; font-size: 7px; line-height: 1.6; }
+  .party h1 { font-size: clamp(42px, 13vw, 72px); margin: 22px 0 18px; }
+  .party-intro { font-size: 12px; max-width: 85%; }
+  .mobile-break { display: block; }
+  .party-stage {
+    --phone-cake-width: min(76vw, 270px);
+    display: block;
+    width: min(100%, 450px);
+    height: 615px;
+    margin: 22px auto 21px;
+    padding: 0;
+    isolation: isolate;
+  }
+  .party-cat {
+    position: absolute;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    width: 90px;
+    height: auto;
+    aspect-ratio: 5 / 6;
+    --tilt: 0deg;
+  }
+  .cat-three { top: 35px; left: 6%; width: clamp(84px, 23vw, 90px); --tilt: -9deg; }
+  .cat-two { top: 0; left: 41%; width: 76px; --tilt: 6deg; }
+  .cat-six { top: 56px; right: 6%; width: clamp(76px, 22vw, 82px); --tilt: 9deg; }
+  .cat-one { top: 438px; left: 5%; width: clamp(88px, 24vw, 94px); --tilt: -7deg; }
+  .cat-four { top: 500px; left: 39%; width: 74px; --tilt: -6deg; }
+  .cat-five { top: 468px; right: 6%; width: 84px; --tilt: 10deg; }
+  .party-cat button { min-width: 44px; min-height: 44px; }
+  .party-cat button:hover { transform: none; }
+  .cat-click-label { display: none; }
+  .cat-click-hint { width: 25px; height: 25px; right: -2px; bottom: 2%; }
+  .party-cat .cat-click-hint svg { width: 18px; height: 18px; }
+  .cake-area {
+    position: absolute;
+    width: var(--phone-cake-width);
+    height: auto;
+    aspect-ratio: 350 / 310;
+    left: calc((100% - var(--phone-cake-width)) / 2);
+    right: auto;
+    top: 176px;
+    bottom: auto;
+    z-index: 1;
+  }
+  .cake { display: block; }
+  .cake-note { top: -9px; left: 0; right: 0; width: 100%; font-size: 14px; text-align: center; transform: rotate(-3deg); }
+  .cake-note span { display: none; }
+  .birthday-sticker, .speech-note, .stage-ground { display: none; }
+  .s1 { top: 205px; left: 6%; font-size: 22px; }
+  .s2 { top: 230px; right: 5%; font-size: 26px; }
+  .s3 { top: 420px; bottom: auto; left: 39%; font-size: 18px; }
+  .wish-message { max-width: 420px; font-size: 20px; padding: 0 22px; }
+  .party-actions { padding: 0 18px; gap: 10px; }
+  .party-actions .button { min-height: 50px; padding: 12px 16px; gap: 15px; }
+  .personal-note { margin: 32px 22px 35px; }
+  .personal-note p { font-size: 12px; }
+  footer { padding-bottom: 34px; }
+}
+
+@media (max-width: 520px) {
+  .envelope-scene { height: 278px; }
+  .envelope { height: auto; aspect-ratio: 1.55; }
+  .envelope-stamp { left: 18px; bottom: 33px; width: 31px; height: 36px; outline-width: 2px; }
+  .envelope-stamp svg { width: 21px; height: 21px; }
+  .envelope-stamp small { font-size: 4px; letter-spacing: .5px; }
+  .envelope-address { right: 20px; bottom: 39px; font-size: 18px; }
+  .envelope-label { bottom: 13px; font-size: 5px; letter-spacing: 1.1px; }
+  .cover .intro { max-width: 290px; margin: auto; }
+}
+
+@media (max-width: 350px) {
+  .party-stage { padding: 0; }
+  .party-actions .button { padding: 12px 13px; gap: 10px; font-size: 11px; }
+  .wish-message { font-size: 18px; }
+}
