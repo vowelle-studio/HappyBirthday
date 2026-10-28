@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6ed">
+  <meta name="description" content="Eine kleine Geburtstagsüberraschung. Mit Liebe, Konfetti und eindeutig zu vielen Katzen.">
+  <title>Eine miau-gische Geburtstagsüberraschung ✨</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./motion.css">
+  <link rel="stylesheet" href="./responsive.css">
+  <script src="./music.js" defer></script>
+  <script src="./motion.js" defer></script>
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="sound-toggle" class="sound-toggle" aria-pressed="true" aria-label="Musik aktiviert – startet beim ersten Tippen" title="Musik aktiviert – startet beim ersten Tippen"><span class="sound-icon" aria-hidden="true"><svg viewBox="0 0 28 28"><path class="music-note" d="M10 20V7l12-3v13M10 11l12-3"/><ellipse class="music-note" cx="6.8" cy="20.5" rx="3.2" ry="2.5"/><ellipse class="music-note" cx="18.8" cy="17.5" rx="3.2" ry="2.5"/><path class="music-slash-back" d="m4 3 20 22"/><path class="music-slash" d="m4 3 20 22"/></svg></span><span id="sound-label">Musik an</span><span class="toggle-light" aria-hidden="true"></span></button>
+  </header>
+
+  <main>
+    <section id="cover" class="cover" aria-labelledby="cover-title">
+      <div class="eyebrow"><span></span> FÜR EINEN GANZ BESONDEREN MENSCHEN</div>
+      <h1 id="cover-title">Post für dich.<br>Mit extra <em>Miau.</em></h1>
+      <p class="intro">Eine kleine Überraschung. Mit ziemlich viel Fell.</p>
+      <div class="envelope-scene">
+        <span class="doodle sparkle sparkle-one" aria-hidden="true">✧</span>
+        <span class="doodle sparkle sparkle-two" aria-hidden="true">✳</span>
+        <span class="little-heart" aria-hidden="true">♡</span>
+        <span class="handnote cover-note">Psst … da ist<br>eine Party drin!<svg viewBox="0 0 85 65" aria-hidden="true"><path d="M5 5Q80 0 65 54m-15-9 15 12 12-15"/></svg></span>
+        <button id="open-card" class="envelope" aria-label="Geburtstagskarte öffnen">
+          <span class="envelope-shell">
+          <span class="envelope-back"></span>
+          <span class="peeking-cat" data-cat="orange" aria-hidden="true"></span>
+          <span class="letter"><span>Für dich. ♡<small>Ein bisschen Glück.<br>Ganz viel Miau.</small></span></span>
+          <span class="envelope-front"></span>
+          <span class="envelope-stamp" aria-hidden="true"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="26" rx="9" ry="7"/><ellipse cx="9" cy="17" rx="3.5" ry="5" transform="rotate(-25 9 17)"/><ellipse cx="17" cy="11" rx="3.5" ry="5"/><ellipse cx="26" cy="12" rx="3.5" ry="5" transform="rotate(15 26 12)"/><ellipse cx="33" cy="19" rx="3.5" ry="5" transform="rotate(30 33 19)"/></svg><small>MIAU POST</small></span>
+          <span class="envelope-address" aria-hidden="true">Für dich ♡</span>
+          <span class="envelope-flap"></span>
+          <span class="seal" aria-hidden="true">♡</span>
+          <span class="envelope-label">MIT EINER EXTRAPORTION KATZEN</span>
+          </span>
+        </button>
+      </div>
+      <button id="open-button" class="button primary">Überraschung öffnen <span aria-hidden="true">↗</span></button>
+      <p class="microcopy">Keine Sorge. Die Katzen beißen nicht. Meistens.</p>
+      <div class="cover-bottom" aria-hidden="true"><span>100% LIEBE</span><span class="mini-flower">✳</span><span>0% ERWACHSEN</span></div>
+    </section>
+
+    <section id="party" class="party" aria-labelledby="party-title" hidden>
+      <div class="eyebrow"><span></span> HOCH SOLLST DU LEBEN. UND DIE TORTE AUCH.</div>
+      <h1 id="party-title" tabindex="-1">Alles Gute zum<br><em>Geburtstag!</em></h1>
+      <p class="intro party-intro">Heute bist du der Star.<br class="mobile-break"> Wir sind nur wegen der Torte hier.</p>
+      <div class="party-stage">
+        <div class="birthday-sticker"><span>OFFIZIELL</span><strong>ein Jahr<br>fabelhafter.</strong><span>VON KATZEN BESTÄTIGT</span></div>
+        <div class="speech-note"><span class="handnote">Wir haben extra<br>nicht auf die Torte<br>gesetzt.</span><span class="note-small">… noch nicht.</span></div>
+        <span class="stage-sparkle s1" aria-hidden="true">✳</span><span class="stage-sparkle s2" aria-hidden="true">✧</span><span class="stage-sparkle s3" aria-hidden="true">✦</span>
+        <div class="party-cat cat-one" data-kind="orange" data-name="Konfetti-Kalle"></div>
+        <div class="party-cat cat-two" data-kind="gray" data-name="Miez Marple"></div>
+        <div class="party-cat cat-three" data-kind="cream" data-name="Professor Schnurr"></div>
+        <div class="party-cat cat-four" data-kind="black" data-name="DJ Pfötchen"></div>
+        <div class="party-cat cat-five" data-kind="pink" data-name="Frau Flausch"></div>
+        <div class="party-cat cat-six" data-kind="white" data-name="Sir Miau"></div>
+        <div class="cake-area">
+          <span class="handnote cake-note" id="cake-hint">Wünsch dir was.<br>Dann puste! <span aria-hidden="true">↙</span></span>
+          <button id="cake" class="cake" aria-label="Geburtstagskerzen auspusten">
+            <svg viewBox="0 0 350 310" role="img" aria-label="Eine Geburtstagstorte mit fünf brennenden Kerzen">
+              <defs>
+                <linearGradient id="cake-sponge" x2="0" y2="1"><stop stop-color="#f0c48d"/><stop offset="1" stop-color="#dfa66f"/></linearGradient>
+                <linearGradient id="cake-cream" x2="0" y2="1"><stop stop-color="#fffdf1"/><stop offset="1" stop-color="#f6e6cb"/></linearGradient>
+                <linearGradient id="cake-plate"><stop stop-color="#dce7d1"/><stop offset=".5" stop-color="#f1f5e9"/><stop offset="1" stop-color="#cadbbb"/></linearGradient>
+              </defs>
+              <ellipse cx="177" cy="282" rx="152" ry="15" fill="#d5dbc8" opacity=".5"/>
+              <ellipse cx="177" cy="274" rx="140" ry="16" fill="url(#cake-plate)" stroke="#6d7c61" stroke-width="2.5"/>
+              <ellipse cx="177" cy="272" rx="126" ry="10" fill="none" stroke="#b4c4a4" stroke-width="1"/>
+              <path d="M65 183v69c0 32 222 32 222 0v-69" fill="url(#cake-sponge)" stroke="#433447" stroke-width="3"/>
+              <path d="M66 218q110 25 220 0v20q-110 25-220 0" fill="#fff1d9"/>
+              <path d="M66 225q110 25 220 0v7q-110 25-220 0" fill="#cd8190"/>
+              <path d="M66 184v21q0 15 13 15t13-13v-1q0-13 12-13t12 13v13q0 14 13 14t13-14v-7q0-12 12-12t12 12v4q0 14 13 14t13-14v-11q0-12 12-12t12 12v2q0 14 13 14t13-14v-4q0-12 12-12t12 12q0 14 12 14t12-14v-21" fill="url(#cake-cream)" stroke="#433447" stroke-width="3"/>
+              <ellipse cx="176" cy="183" rx="111" ry="27" fill="url(#cake-cream)" stroke="#433447" stroke-width="3"/>
+              <g class="cake-berries" stroke-linejoin="round"><path d="M75 173q8-11 17 0c4 6-6 16-9 17-4-3-11-11-8-17Z" fill="#db7d79" stroke="#ab6565" stroke-width="1.5"/><path d="m74 170 8 2 2-7 3 7 8-1-8 5Z" fill="#8fa277"/><path d="m79 178 1 2m6-2 1 2m-4 3 1 2" stroke="#fff1c3" stroke-width="1.5" stroke-linecap="round"/><path d="M257 176q8-11 17 0c4 6-6 16-9 17-4-3-11-11-8-17Z" fill="#db7d79" stroke="#ab6565" stroke-width="1.5"/><path d="m256 173 8 2 2-7 3 7 8-1-8 5Z" fill="#8fa277"/><path d="m261 181 1 2m6-2 1 2m-4 3 1 2" stroke="#fff1c3" stroke-width="1.5" stroke-linecap="round"/></g>
+              <g stroke="#433447" stroke-width="2.5" stroke-linejoin="round">
+                <path d="M99 170v-57h13v57" fill="#c3b0e5"/><path d="m100 125 11 8m-11 8 11 8m-11 8 11 8" stroke="#fff4df"/>
+                <path d="M135 161v-68h13v68" fill="#f39b77"/><path d="m136 104 11 8m-11 8 11 8m-11 8 11 8" stroke="#fff4df"/>
+                <path d="M171 159V82h13v77" fill="#adbf8d"/><path d="m172 92 11 8m-11 8 11 8m-11 8 11 8m-11 8 11 8" stroke="#fff4df"/>
+                <path d="M207 163V96h13v67" fill="#c3b0e5"/><path d="m208 107 11 8m-11 8 11 8m-11 8 11 8" stroke="#fff4df"/>
+                <path d="M243 172v-57h13v57" fill="#f39b77"/><path d="m244 126 11 8m-11 8 11 8m-11 8 11 8" stroke="#fff4df"/>
+              </g>
+              <g class="candle-wicks" fill="none" stroke="#665046" stroke-width="2" stroke-linecap="round"><path d="M105 113v-9m36-11v-9m36-2v-9m36 23v-9m36 28v-9"/></g>
+              <g class="blow-gust" fill="none" stroke="#baa4ce" stroke-width="1.8" stroke-linecap="round"><path d="M32 90q25-18 53-5t70-3"/><path d="M39 107q34-14 72-4t101-5"/><path d="M64 65q18-9 44-2t74-3"/></g>
+              <g class="flames">
+                <g transform="translate(105 111)"><g class="candle-fire"><ellipse class="flame-glow" cx="0" cy="-15" rx="15" ry="23"/><path class="flame-outer" d="M0-4C-12-10-5-22 2-32 4-20 14-10 0-4Z"/><path class="flame-core" d="M0-5C-5-9-2-15 1-20 4-14 7-9 0-5Z"/></g></g>
+                <g transform="translate(141 91)"><g class="candle-fire"><ellipse class="flame-glow" cx="0" cy="-15" rx="15" ry="23"/><path class="flame-outer" d="M0-4C-12-10-5-22 2-32 4-20 14-10 0-4Z"/><path class="flame-core" d="M0-5C-5-9-2-15 1-20 4-14 7-9 0-5Z"/></g></g>
+                <g transform="translate(177 80)"><g class="candle-fire"><ellipse class="flame-glow" cx="0" cy="-15" rx="15" ry="23"/><path class="flame-outer" d="M0-4C-12-10-5-22 2-32 4-20 14-10 0-4Z"/><path class="flame-core" d="M0-5C-5-9-2-15 1-20 4-14 7-9 0-5Z"/></g></g>
+                <g transform="translate(213 94)"><g class="candle-fire"><ellipse class="flame-glow" cx="0" cy="-15" rx="15" ry="23"/><path class="flame-outer" d="M0-4C-12-10-5-22 2-32 4-20 14-10 0-4Z"/><path class="flame-core" d="M0-5C-5-9-2-15 1-20 4-14 7-9 0-5Z"/></g></g>
+                <g transform="translate(249 113)"><g class="candle-fire"><ellipse class="flame-glow" cx="0" cy="-15" rx="15" ry="23"/><path class="flame-outer" d="M0-4C-12-10-5-22 2-32 4-20 14-10 0-4Z"/><path class="flame-core" d="M0-5C-5-9-2-15 1-20 4-14 7-9 0-5Z"/></g></g>
+              </g>
+              <g class="smoke" fill="none" stroke="#9b8b99" stroke-width="1.6" stroke-linecap="round"><path d="M105 104c-10-11 9-16 0-28s-6-18 1-25"/><path d="M141 84c9-11-10-18-1-29s8-17 0-24"/><path d="M177 73c-9-10 10-17 0-29s-5-18 2-25"/><path d="M213 87c10-11-9-17 0-28s6-17-1-25"/><path d="M249 106c-9-11 10-17 1-29s-7-18 0-25"/></g>
+              <g fill="#ed9176"><ellipse cx="108" cy="181" rx="5" ry="2" transform="rotate(-20 108 181)"/><ellipse cx="225" cy="180" rx="5" ry="2" transform="rotate(20 225 180)"/></g>
+              <path d="m144 180 7 2m43-7 6-2m-27 16 5 3m-47-15 2-4m104 13 5-2" stroke="#8a9c70" stroke-width="3" stroke-linecap="round"/>
+              <path d="M157 243q4-7 8 0m25 0q4-7 8 0m-27 8q7 8 14 0" fill="none" stroke="#433447" stroke-width="2.5" stroke-linecap="round"/>
+              <g fill="#d98e83" opacity=".65"><ellipse cx="149" cy="250" rx="6" ry="3"/><ellipse cx="207" cy="250" rx="6" ry="3"/></g>
+            </svg>
+          </button>
+        </div>
+        <div class="stage-ground" aria-hidden="true"></div>
+      </div>
+      <p id="wish-message" class="wish-message">Möge dein Tag so schön sein wie ein Karton für eine Katze.</p>
+      <div class="party-actions"><button id="more-cats" class="button primary">Mehr Katzen! <span aria-hidden="true">✳</span></button><button id="reset-card" class="button secondary">Nochmal öffnen <span aria-hidden="true">↺</span></button></div>
+      <p class="microcopy cat-instructions"><span class="desktop-instruction">Klick auf die Katzen</span><span class="touch-instruction">Tippe auf die Katzen</span> – jede hat etwas zu sagen.</p>
+      <div class="personal-note"><span aria-hidden="true">♡</span><p>Für das neue Lebensjahr: ganz viel Glück, gute Laune<br>und immer einen Grund zum Schnurren.</p><span class="sign-off" id="sender">Alles Liebe von deinem Team</span></div>
+    </section>
+  </main>
+
+  <footer><span>MIT LIEBE, VIEL FELL & EIN BISSCHEN CHAOS.</span><span>Handverlesen. Pfotengeprüft. <span aria-hidden="true">♡</span></span></footer>
+  <div id="effects" aria-hidden="true"></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">Alles Gute zum Geburtstag! 🎂 Diese Katzenparty braucht JavaScript. Bitte aktiviere es, um die Karte zu öffnen.</div></noscript>
+</body>
+</html>
