@@ -87,8 +87,17 @@ window.KatzenMusic = (() => {
       master.connect(context.destination);
     }
     enabled = true;
-    await context.resume();
-    if (enabled && !document.hidden && !scheduler) schedule();
+    const resumed = context.resume();
+    // iOS needs a source to start inside the touch event, before any await.
+    if (context.state !== 'running') {
+      const unlock = context.createBufferSource();
+      unlock.buffer = context.createBuffer(1, 1, context.sampleRate);
+      unlock.connect(context.destination);
+      unlock.onended = () => unlock.disconnect();
+      unlock.start(0);
+    }
+    if (!document.hidden && !scheduler) schedule();
+    await resumed;
   }
 
   function stop() {
@@ -101,8 +110,8 @@ window.KatzenMusic = (() => {
   document.addEventListener('visibilitychange', () => {
     if (!enabled) return;
     if (document.hidden) { clearInterval(scheduler); scheduler = 0; stopVoices(); }
-    else if (context.state === 'running') schedule();
+    else start().catch(() => {});
   });
   window.addEventListener('pagehide', stop);
-  return { start, stop };
+  return { start, stop, get isPlaying() { return enabled && context?.state === 'running' && !!scheduler; } };
 })();

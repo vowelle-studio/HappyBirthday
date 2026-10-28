@@ -8,6 +8,9 @@ window.KatzenMotion = (() => {
   const effects = new Set();
   const timers = new Set();
   const colors = ['#c6b6df', '#d97343', '#a9ba8e', '#e9bc69', '#e3b5af'];
+  function sparkleSvg(flower = false) {
+    return `<svg xmlns="http://www.w3.org/2000/svg" ${flower ? 'data-flower="true"' : ''} viewBox="0 0 32 32" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${flower ? '<path d="M16 3v26M3 16h26M7 7l18 18M7 25 25 7"/>' : '<path d="m16 2 4 10 10 4-10 4-4 10-4-10-10-4 10-4Z"/>'}</svg>`;
+  }
   const layer = document.querySelector('#effects');
   const canvas = document.createElement('canvas');
   canvas.id = 'confetti-canvas';
@@ -120,7 +123,8 @@ window.KatzenMotion = (() => {
     for (let i = 0; i < count; i++) {
       const element = document.createElement('span');
       element.className = `effect-glint${hearts ? ' heart-reaction' : ''}`;
-      element.textContent = hearts ? (i % 3 ? '♡' : '♥') : (i % 2 ? '✧' : '✦');
+      if (hearts) element.textContent = i % 3 ? '♡' : '♥';
+      else element.innerHTML = sparkleSvg(i % 3 === 0);
       element.style.color = colors[i % colors.length];
       const angle = (i / count) * Math.PI * 2;
       const length = 35 + Math.random() * (hearts ? 65 : 105);
@@ -400,6 +404,9 @@ window.KatzenMotion = (() => {
 
   function init(artwork) {
     catArtwork = artwork;
+    document.querySelectorAll('.sparkle, .stage-sparkle, .mini-flower, #more-cats > span').forEach(element => {
+      element.innerHTML = sparkleSvg(!!element.querySelector('[data-flower]') || element.textContent.includes('✳'));
+    });
     document.querySelectorAll('h1').forEach(splitHeading);
     revealCover();
   }

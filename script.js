@@ -123,8 +123,8 @@
   document.querySelectorAll('.party-cat').forEach((element, index) => {
     const button = document.createElement('button');
     button.type = 'button';
-    button.setAttribute('aria-label', `${element.dataset.name} – lass die Katze sprechen`);
-    button.innerHTML = `<span class="cat-reaction"><span class="cat-float">${catSvg(element.dataset.kind, index)}</span></span>${clickHint}${index === 0 ? '<span class="cat-click-label" aria-hidden="true">Klick mich!</span>' : ''}`;
+    button.setAttribute('aria-label', `${element.dataset.name} — натисни, щоб почути жарт`);
+    button.innerHTML = `<span class="cat-reaction"><span class="cat-float">${catSvg(element.dataset.kind, index)}</span></span>${clickHint}${index === 0 ? '<span class="cat-click-label" aria-hidden="true">Натисни!</span>' : ''}`;
     element.style.setProperty('--blink-delay', `${-index * .7}s`);
     element.style.setProperty('--idle-duration', `${4.6 + index * .38}s`);
     element.style.setProperty('--wave-delay', `${-index * .85}s`);
@@ -144,10 +144,10 @@
     const accent = document.createElement('em');
     accent.textContent = 'Geburtstag!';
     $('#party-title').append(accent);
-    $('.party-intro').textContent = `Heute bist du der Star, ${recipient}. Wir sind nur wegen der Torte hier.`;
+    $('.party-intro').textContent = `Сьогодні ти — зірка, ${recipient}. А ми тут заради тортика.`;
     document.title = `Alles Gute zum Geburtstag, ${recipient}!`;
   }
-  if (sender) $('#sender').textContent = `Alles Liebe von ${sender}`;
+  if (sender) $('#sender').textContent = `З любов’ю, ${sender}`;
 
   let isOpening = false;
   let soundOn = true;
@@ -173,10 +173,13 @@
 
   function showMusicState(ready = true) {
     $('#sound-toggle').setAttribute('aria-pressed', String(soundOn));
-    const label = soundOn ? (ready ? 'Geburtstagsmelodie ausschalten' : 'Musik aktiviert – startet beim ersten Tippen') : 'Geburtstagsmelodie einschalten';
+    const ukrainian = !$('#party').hidden;
+    const label = ukrainian
+      ? (soundOn ? (ready ? 'Вимкнути святкову мелодію' : 'Музика почнеться після дотику') : 'Увімкнути святкову мелодію')
+      : (soundOn ? (ready ? 'Geburtstagsmelodie ausschalten' : 'Musik aktiviert – startet beim ersten Tippen') : 'Geburtstagsmelodie einschalten');
     $('#sound-toggle').setAttribute('aria-label', label);
     $('#sound-toggle').title = label;
-    $('#sound-label').textContent = soundOn ? 'Musik an' : 'Musik aus';
+    $('#sound-label').textContent = ukrainian ? (soundOn ? 'Музика грає' : 'Музика вимкнена') : (soundOn ? 'Musik an' : 'Musik aus');
   }
 
   function startMusic() {
@@ -187,10 +190,11 @@
   startMusic().catch(() => {});
   // Mobile browsers may require a real gesture to unlock audible playback.
   function unlockMusic(event) {
-    if (soundOn && !event.target.closest?.('#sound-toggle')) startMusic().catch(() => {});
+    if (soundOn && !window.KatzenMusic.isPlaying && !event.target.closest?.('#sound-toggle')) startMusic().catch(() => {});
   }
-  document.addEventListener('pointerdown', unlockMusic, { once: true, capture: true });
-  document.addEventListener('keydown', unlockMusic, { once: true, capture: true });
+  document.addEventListener('pointerdown', unlockMusic, { capture: true, passive: true });
+  document.addEventListener('touchend', unlockMusic, { capture: true, passive: true });
+  document.addEventListener('keydown', unlockMusic, { capture: true });
 
   $('#sound-toggle').addEventListener('click', async () => {
     if (soundBusy) return;
@@ -223,6 +227,9 @@
     clearTimeout(openingTimer);
     $('#cover').hidden = true;
     $('#party').hidden = false;
+    showMusicState(window.KatzenMusic.isPlaying);
+    document.querySelector('footer > span:first-child').textContent = 'З ЛЮБОВ’Ю, ПУХНАСТИМИ ЛАПКАМИ Й ТРОХИ ХАОСОМ.';
+    document.querySelector('footer > span:last-child').textContent = 'Перевірено котиками. ♡';
     window.scrollTo({ top: 0, behavior: 'instant' });
     $('#party-title').focus({ preventScroll: true });
     motion.revealParty();
@@ -243,17 +250,17 @@
   $('#open-button').addEventListener('click', openCard);
 
   const quotes = [
-    ['Kalorien? Heute zählen nur Streicheleinheiten.', 'Ich habe die Torte bewacht. Mit dem Mund.'],
-    ['Du wirst nicht älter. Nur gemütlicher.', 'Mein Geschenk? Ich habe nichts vom Tisch geworfen.'],
-    ['9 Leben, aber nur einen Tag wie diesen. Feier schön!', 'Wissenschaftlich bewiesen: Mehr Kuchen = mehr Glück.'],
-    ['DJ Pfötchen spielt heute nur Schnurr-Hits.', 'Meeting abgesagt. Grund: Geburtstag. Miau.'],
-    ['Bleib so wunderbar. Und rück ein Stück Torte raus.', 'Dresscode: Fell und gute Laune.'],
-    ['Dein Alter bleibt unter uns. Und dem ganzen Internet.', 'Du bist die Lieblingsperson in unserem Karton.']
+    ['Калорії? Сьогодні рахують лише погладжування!', 'Я охороняв тортик. Ротом.'],
+    ['Ти не старієш. Просто стаєш затишнішою людиною.', 'Мій подарунок? Я нічого не скинув зі столу.'],
+    ['У мене дев’ять життів, але такого дня, як цей, більше немає. Святкуй!', 'Науково доведено: більше тортика — більше щастя.'],
+    ['DJ Лапка сьогодні ставить тільки муркотливі хіти!', 'Усі зустрічі скасовано. Причина: день народження. Мяу.'],
+    ['Залишайся такою ж чудовою людиною. І поділись тортиком!', 'Дрескод вечірки: пухнастість і гарний настрій.'],
+    ['Твій вік залишиться між нами. І всім інтернетом.', 'Ти — наша улюблена людина в цій коробці.']
   ];
   const talkCounts = new Map();
   function catTalk(element, index) {
     const count = talkCounts.get(index) || 0;
-    toast(`${element.dataset.name}: „${quotes[index][count % quotes[index].length]}“`);
+    toast(`${element.dataset.name}: «${quotes[index][count % quotes[index].length]}»`);
     talkCounts.set(index, count + 1);
     motion.catReaction(element);
   }
@@ -266,9 +273,10 @@
     extinguishTimer = setTimeout(() => $('#cake').classList.add('extinguished'), reducedMotion.matches ? 0 : 1000);
     $('#cake').setAttribute('aria-label', 'Die Geburtstagskerzen sind ausgepustet');
     $('#cake svg').setAttribute('aria-label', 'Eine Geburtstagstorte mit fünf ausgepusteten Kerzen');
-    $('#cake-hint').innerHTML = 'Pffff … geschafft!<br>Wunsch ist unterwegs. ♡';
-    $('#wish-message').textContent = 'Wunsch abgeschickt. Das Universum tippt gerade … ✨';
-    toast('Alle Kerzen aus! Dein Wunsch bleibt natürlich streng geheim.');
+    $('#cake-hint').innerHTML = 'Pffff … geschafft!<br>Dein Wunsch ist unterwegs. ♡';
+    $('#cake-caption').textContent = 'Eine Geburtstagstorte mit fünf ausgepusteten Kerzen';
+    $('#wish-message').textContent = 'Бажання відправлено. Всесвіт уже набирає відповідь…';
+    toast('Усі свічки погасли! Твоє бажання — наш маленький секрет.');
     confetti(65);
     motion.wish();
   });
@@ -281,7 +289,7 @@
     confetti(60);
     motion.ring();
     motion.miau();
-    const messages = ['Katzenkonfetti! Die Situation ist komplett unter Kontrolle. Ungefähr.', 'Achtung: Die Flauschdichte hat sich soeben verdoppelt.', 'Die Katzen haben jetzt die Party übernommen.', 'Es gibt kein „zu viele Katzen“. Nur zu wenig Torte.'];
+    const messages = ['Котяче конфеті! Усе під контролем. Майже.', 'Увага! Кількість пухнастості щойно подвоїлась.', 'Тепер цією вечіркою керують коти.', 'Котів забагато не буває. Буває замало тортика.'];
     toast(messages[(chaosCount - 1) % messages.length]);
     $('#more-cats').disabled = true;
     flightTimer = setTimeout(() => {
@@ -302,6 +310,9 @@
     $('#toast').classList.remove('visible');
     $('#party').hidden = true;
     $('#cover').hidden = false;
+    showMusicState(window.KatzenMusic.isPlaying);
+    document.querySelector('footer > span:first-child').textContent = 'MIT LIEBE, VIEL FELL & EIN BISSCHEN CHAOS.';
+    document.querySelector('footer > span:last-child').textContent = 'Handverlesen. Pfotengeprüft. ♡';
     $('#cover').classList.remove('opening');
     $('#reset-card').disabled = false;
     $('#open-button').disabled = false;
@@ -312,7 +323,8 @@
     $('#cake').setAttribute('aria-label', 'Geburtstagskerzen auspusten');
     $('#cake svg').setAttribute('aria-label', 'Eine Geburtstagstorte mit fünf brennenden Kerzen');
     $('#cake-hint').innerHTML = 'Wünsch dir was.<br>Dann puste! <span aria-hidden="true">↙</span>';
-    $('#wish-message').textContent = 'Möge dein Tag so schön sein wie ein Karton für eine Katze.';
+    $('#wish-message').textContent = 'Нехай цей день тішить тебе, як нова коробка — кота.';
+    $('#cake-caption').textContent = 'Eine Geburtstagstorte mit fünf brennenden Kerzen';
     wished = false;
     isOpening = false;
     celebrationPending = false;

@@ -47,14 +47,17 @@ ellipse.music-note { fill: currentColor; stroke: none; }
 .music-slash-back { stroke: var(--paper); stroke-width: 5; }
 .music-slash { stroke: #cd5b58; stroke-width: 2.2; stroke-linecap: round; }
 .sound-toggle[aria-pressed=true] .music-slash, .sound-toggle[aria-pressed=true] .music-slash-back { display: none; }
+.sparkle svg, .stage-sparkle svg, .mini-flower svg, #more-cats > span svg, .effect-glint svg { width: 1em; height: 1em; display: block; }
+.mini-flower, #more-cats > span { display: inline-block; }
+.cake-caption { position: absolute; bottom: 0; left: 0; right: 0; margin: 0; font-size: 8px; line-height: 1.3; color: #8b7c74; pointer-events: none; }
 
 @media (max-width: 700px) {
   .site-header { height: 0; padding: 0; }
   .sound-toggle {
     position: fixed;
     right: 8px;
-    top: calc(50svh - 23px);
-    bottom: auto;
+    top: auto;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
     width: 46px;
     height: 46px;
     padding: 0;
@@ -71,19 +74,25 @@ ellipse.music-note { fill: currentColor; stroke: none; }
   .sound-icon svg { width: 24px; height: 24px; }
   .sound-toggle:focus-visible { outline-offset: 4px; }
   .toast { bottom: calc(82px + env(safe-area-inset-bottom, 0px)); }
-  .cover { padding-top: 46px; min-height: calc(100svh - 90px); }
-  .cover h1 { font-size: clamp(40px, 12.5vw, 66px); }
+  .cover { display: flex; flex-direction: column; align-items: center; justify-content: center; height: calc(100svh - 88px); min-height: 0; padding: 16px 20px 8px; }
+  .cover h1 { font-size: clamp(38px, 11.7vw, 60px); margin: 14px 0 12px; }
+  .cover .envelope-scene { flex-shrink: 0; width: min(100%, 310px); height: 248px; margin: 18px auto 8px; }
+  .cover .envelope { --letter-travel: -75px; width: calc(100% - 40px); height: auto; aspect-ratio: 1.55; left: 20px; }
+  .cover .peeking-cat { width: 90px; height: 106px; top: -68px; left: calc(50% - 45px); }
+  .cover .cover-bottom { margin: 20px auto 4px; }
+  .cover .cover-note { font-size: 15px; top: 0; right: 0; }
+  .cover .microcopy { margin-top: 13px; }
   .party { padding-top: 39px; }
   .party > .eyebrow { max-width: 88%; margin: auto; font-size: 7px; line-height: 1.6; }
   .party h1 { font-size: clamp(42px, 13vw, 72px); margin: 22px 0 18px; }
   .party-intro { font-size: 12px; max-width: 85%; }
   .mobile-break { display: block; }
   .party-stage {
-    --phone-cake-width: min(76vw, 270px);
+    --phone-cake-width: min(58vw, 205px);
     display: block;
     width: min(100%, 450px);
-    height: 615px;
-    margin: 22px auto 21px;
+    height: 466px;
+    margin: 16px auto 16px;
     padding: 0;
     isolation: isolate;
   }
@@ -98,12 +107,12 @@ ellipse.music-note { fill: currentColor; stroke: none; }
     aspect-ratio: 5 / 6;
     --tilt: 0deg;
   }
-  .cat-three { top: 35px; left: 6%; width: clamp(84px, 23vw, 90px); --tilt: -9deg; }
-  .cat-two { top: 0; left: 41%; width: 76px; --tilt: 6deg; }
-  .cat-six { top: 56px; right: 6%; width: clamp(76px, 22vw, 82px); --tilt: 9deg; }
-  .cat-one { top: 438px; left: 5%; width: clamp(88px, 24vw, 94px); --tilt: -7deg; }
-  .cat-four { top: 500px; left: 39%; width: 74px; --tilt: -6deg; }
-  .cat-five { top: 468px; right: 6%; width: 84px; --tilt: 10deg; }
+  .cat-three { top: 28px; left: 11%; width: 70px; --tilt: -9deg; }
+  .cat-two { top: 0; left: 43%; width: 60px; --tilt: 6deg; }
+  .cat-six { top: 42px; right: 9%; width: 66px; --tilt: 9deg; }
+  .cat-one { top: 326px; left: 9%; width: 74px; --tilt: -7deg; }
+  .cat-four { top: 376px; left: 42%; width: 60px; --tilt: -6deg; }
+  .cat-five { top: 346px; right: 9%; width: 68px; --tilt: 10deg; }
   .party-cat button { min-width: 44px; min-height: 44px; }
   .party-cat button:hover { transform: none; }
   .cat-click-label { display: none; }
@@ -116,34 +125,51 @@ ellipse.music-note { fill: currentColor; stroke: none; }
     aspect-ratio: 350 / 310;
     left: calc((100% - var(--phone-cake-width)) / 2);
     right: auto;
-    top: 176px;
+    top: 133px;
     bottom: auto;
     z-index: 1;
   }
   .cake { display: block; }
-  .cake-note { top: -9px; left: 0; right: 0; width: 100%; font-size: 14px; text-align: center; transform: rotate(-3deg); }
+  .cake-note { top: -6px; left: 0; right: 0; width: 100%; font-size: 12px; line-height: 1.2; text-align: center; transform: rotate(-3deg); }
   .cake-note span { display: none; }
-  .birthday-sticker, .speech-note, .stage-ground { display: none; }
-  .s1 { top: 205px; left: 6%; font-size: 22px; }
-  .s2 { top: 230px; right: 5%; font-size: 26px; }
-  .s3 { top: 420px; bottom: auto; left: 39%; font-size: 18px; }
+  .speech-note, .stage-ground { display: none; }
+  .birthday-sticker { display: flex; width: 74px; height: 74px; top: 201px; left: 8px; right: auto; outline-width: 3px; transform: rotate(-10deg); pointer-events: none; }
+  .birthday-sticker strong { font-size: 13px; line-height: 1.05; margin: 7px 0; }
+  .birthday-sticker span { font-size: 4px; letter-spacing: .6px; }
+  .birthday-sticker span:last-child { font-size: 3.4px; letter-spacing: .1px; }
+  .cake-caption { left: -25px; right: -25px; font-size: 8px; }
+  .s1 { display: none; }
+  .s1 { top: 170px; left: 8%; font-size: 20px; }
+  .s2 { top: 210px; right: 7%; font-size: 22px; }
+  .s3 { top: 320px; bottom: auto; left: 39%; font-size: 16px; }
   .wish-message { max-width: 420px; font-size: 20px; padding: 0 22px; }
   .party-actions { padding: 0 18px; gap: 10px; }
   .party-actions .button { min-height: 50px; padding: 12px 16px; gap: 15px; }
   .personal-note { margin: 32px 22px 35px; }
   .personal-note p { font-size: 12px; }
-  footer { padding-bottom: 34px; }
+  footer { padding: 16px 0 26px; }
 }
 
 @media (max-width: 520px) {
-  .envelope-scene { height: 278px; }
   .envelope { height: auto; aspect-ratio: 1.55; }
   .envelope-stamp { left: 18px; bottom: 33px; width: 31px; height: 36px; outline-width: 2px; }
   .envelope-stamp svg { width: 21px; height: 21px; }
   .envelope-stamp small { font-size: 4px; letter-spacing: .5px; }
   .envelope-address { right: 20px; bottom: 39px; font-size: 18px; }
   .envelope-label { bottom: 13px; font-size: 5px; letter-spacing: 1.1px; }
-  .cover .intro { max-width: 290px; margin: auto; }
+  .cover .intro { max-width: 290px; margin: 0 auto; }
+}
+
+@media (max-width: 700px) and (max-height: 700px) {
+  .cover { height: calc(100svh - 40px); padding-top: 10px; }
+  .cover h1 { font-size: clamp(32px, 10vw, 44px); margin: 10px 0; }
+  .cover .intro { font-size: 10px; }
+  .cover .envelope-scene { width: min(100%, 280px); height: 220px; margin: 18px auto 6px; }
+  .cover .envelope { width: calc(100% - 50px); left: 25px; }
+  .cover .peeking-cat { width: 88px; height: 102px; top: -66px; left: calc(50% - 44px); }
+  .cover .cover-bottom { display: none; }
+  body:has(#cover:not([hidden])) footer { padding: 12px 0; }
+  body:has(#cover:not([hidden])) footer > span:last-child { display: none; }
 }
 
 @media (max-width: 350px) {
